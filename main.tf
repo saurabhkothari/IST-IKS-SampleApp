@@ -38,9 +38,9 @@ resource helm_release nginx_ingress {
 provider "helm" {
   kubernetes {
     host = var.kubehost
-    client_certificate = var.kubeclientcert
-    client_key = var.kubeclientkey
-    cluster_ca_certificate = var.kubeclustercert
+    client_certificate = base64decode(var.kubeclientcert)
+    client_key = base64decode(var.kubeclientkey)
+    cluster_ca_certificate = base64decode(var.kubeclustercert)
   }
 }
 
