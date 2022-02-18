@@ -7,7 +7,19 @@ terraform {
   }
 }
 
-variable "kube_config" {
+variable "kubehost" {
+  type = string
+}
+
+variable "kubeclientcert" {
+  type = string
+}
+
+variable "kubeclientkey" {
+  type = string
+}
+
+variable "kubeclustercert" {
   type = string
 }
 
@@ -25,7 +37,10 @@ resource helm_release nginx_ingress {
 
 provider "helm" {
   kubernetes {
-    config_path = var.kube_config
+    host = var.kubehost
+    client_certificate = var.kubeclientcert
+    client_key = var.kubeclientkey
+    cluster_ca_certificate = var.kubeclustercert
   }
 }
 
