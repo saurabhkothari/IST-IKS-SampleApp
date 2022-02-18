@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+variable "kube_config" {
+  type = string
+}
+
 resource helm_release nginx_ingress {
   name       = "nginx-ingress-controller"
 
