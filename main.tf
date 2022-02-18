@@ -23,15 +23,14 @@ variable "kubeclustercert" {
   type = string
 }
 
-resource helm_release nginx_ingress {
-  name       = "nginx-ingress-controller"
-
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "nginx-ingress-controller"
+resource helm_release helloiksfrtfcb {
+  name       = "helloiksapp"
+  namespace = "default"
+  chart = "https://github.com/CiscodCloud/helm_chart/raw/f64d4bd7b58c379b79f584e325ebdd07d1725381/helloiks-0.1.0.tgz"
 
   set {
-    name  = "service.type"
-    value = "ClusterIP"
+    name  = "MESSAGE"
+    value = "ATX Demo - Expanding to New Use Cases Cisco Intersight Service for HashiCorp Terraform"
   }
 }
 
